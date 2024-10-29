@@ -1,0 +1,48 @@
+:root {
+  /* Node Styles */
+  --xy-node-background-color-default: #1e1e1e;
+  --xy-node-border-default: 1px solid #3c3c3c;
+  --xy-node-color-default: #ffffff;
+
+  /* Edge Styles */
+  --xy-edge-stroke-default: #888888;
+  --xy-edge-stroke-selected-default: #bbbbbb;
+  --xy-edge-stroke-width-default: 1;
+
+  /* Connection Line */
+  --xy-connectionline-stroke-default: #888888;
+  --xy-connectionline-stroke-width-default: 1;
+
+  /* Handle Styles */
+  --xy-handle-background-color-default: #bbbbbb;
+  --xy-handle-border-color-default: #1e1e1e;
+
+  /* Background Pattern */
+  --xy-background-pattern-dot-color-default: #2d2d2d;
+  --xy-background-pattern-line-color-default: #2d2d2d;
+  --xy-background-pattern-cross-color-default: #2d2d2d;
+
+  /* Selection Styles */
+  --xy-selection-background-color-default: rgba(255, 255, 255, 0.1);
+  --xy-selection-border-default: 1px dotted rgba(255, 255, 255, 0.5);
+
+  /* Controls Styles */
+  --xy-controls-button-background-color-default: #3c3c3c;
+  --xy-controls-button-background-color-hover-default: #555555;
+  --xy-controls-button-color-default: #ffffff;
+  --xy-controls-button-color-hover-default: #ffffff;
+  --xy-controls-button-border-color-default: #3c3c3c;
+
+  /* MiniMap */
+  --xy-minimap-background-color-default: #2d2d2d;
+
+  /* Attribution */
+  --xy-attribution-background-color-default: rgba(0, 0, 0, 0.5);
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}

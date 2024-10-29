@@ -1,0 +1,28 @@
+.app {
+  display: flex;
+  height: 100vh;
+  background-color: var(--xy-node-background-color-default);
+  color: var(--xy-node-color-default);
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+.codeEditor {
+  width: 30%;
+  border-right: var(--xy-node-border-default);
+  height: 100vh;
+  overflow: auto;
+  background-color: var(--xy-node-background-color-default);
+}
+
+.canvasArea {
+  width: 70%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  background-color: var(--xy-node-background-color-default);
+}
+
+.canvasWrapper {
+  position: relative;
+}
