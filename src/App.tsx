@@ -1,46 +1,38 @@
-import { useState } from 'react';
-import {
-  ReactFlow,
-  Controls,
-  addEdge,
-  useNodesState,
-  useEdgesState,
-  OnConnect,
-} from '@xyflow/react';
-import { CodeEditor } from '@/components/CodeEditor';
 import { CanvasSizeControls } from '@/components/CanvasSizeControls';
 import { CaptureButtons } from '@/components/CaptureButtons';
+import { CodeEditor } from '@/components/CodeEditor';
+import {
+  Controls,
+  OnConnect,
+  ReactFlow,
+  addEdge,
+  useEdgesState,
+  useNodesState,
+} from '@xyflow/react';
+import { useState } from 'react';
 import styles from './App.module.css';
 
 import '@xyflow/react/dist/style.css';
 
+import { edgeTypes, initialEdges } from './edges';
 import { initialNodes, nodeTypes } from './nodes';
-import { initialEdges, edgeTypes } from './edges';
+
+const GRID_SIZE = 20; // Base grid size
 
 export default function App() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+  const [canvasSize, setCanvasSize] = useState({ width: 1600, height: 1200 }); // Larger default size
 
-  const [canvasSize, setCanvasSize] = useState({ width: 800, height: 600 });
-
-  const onConnect: OnConnect = (connection) =>
-    setEdges((eds) => addEdge(connection, eds));
+  const onConnect: OnConnect = (connection) => setEdges((eds) => addEdge(connection, eds));
 
   return (
     <div className={styles.app}>
       <div className={styles.codeEditor}>
-        <CodeEditor
-          nodes={nodes}
-          edges={edges}
-          setNodes={setNodes}
-          setEdges={setEdges}
-        />
+        <CodeEditor nodes={nodes} edges={edges} setNodes={setNodes} setEdges={setEdges} />
       </div>
       <div className={styles.canvasArea}>
-        <CanvasSizeControls
-          canvasSize={canvasSize}
-          setCanvasSize={setCanvasSize}
-        />
+        <CanvasSizeControls canvasSize={canvasSize} setCanvasSize={setCanvasSize} />
         <div
           className={styles.canvasWrapper}
           style={{ width: canvasSize.width, height: canvasSize.height }}
@@ -54,6 +46,8 @@ export default function App() {
             onEdgesChange={onEdgesChange}
             onConnect={onConnect}
             colorMode="dark"
+            snapToGrid={true}
+            snapGrid={[GRID_SIZE, GRID_SIZE]}
             fitView
             style={{ width: '100%', height: '100%' }}
           >

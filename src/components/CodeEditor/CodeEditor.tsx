@@ -1,7 +1,16 @@
-import { useEffect, useState } from 'react';
+import { AppNode } from '@/nodes/types';
 import Editor from '@monaco-editor/react';
+import { Edge } from '@xyflow/react';
+import { useEffect, useState } from 'react';
 
-export const CodeEditor = ({ nodes, edges, setNodes, setEdges }) => {
+interface CodeEditorProps {
+  nodes: AppNode[];
+  edges: Edge[];
+  setNodes: (nodes: AppNode[]) => void;
+  setEdges: (edges: Edge[]) => void;
+}
+
+export const CodeEditor = ({ nodes, edges, setNodes, setEdges }: CodeEditorProps) => {
   const [code, setCode] = useState('');
 
   useEffect(() => {
@@ -9,7 +18,7 @@ export const CodeEditor = ({ nodes, edges, setNodes, setEdges }) => {
     setCode(json);
   }, [nodes, edges]);
 
-  const handleEditorChange = (value) => {
+  const handleEditorChange = (value: string | undefined) => {
     setCode(value || '');
     try {
       const { nodes: newNodes, edges: newEdges } = JSON.parse(value || '{}');
@@ -33,5 +42,3 @@ export const CodeEditor = ({ nodes, edges, setNodes, setEdges }) => {
     />
   );
 };
-
-export default CodeEditor;
