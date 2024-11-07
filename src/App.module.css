@@ -1,17 +1,16 @@
 .app {
   display: flex;
   height: 100vh;
-  background-color: var(--xy-node-background-color-default);
-  color: var(--xy-node-color-default);
+  background-color: var(--background);
+  color: var(--foreground);
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 .codeEditor {
   width: 30%;
-  border-right: var(--xy-node-border-default);
   height: 100vh;
   overflow: auto;
-  background-color: var(--xy-node-background-color-default);
+  background-color: var(--background);
 }
 
 .canvasArea {
@@ -20,9 +19,11 @@
   display: flex;
   flex-direction: column;
   overflow: auto;
-  background-color: var(--xy-node-background-color-default);
+  background-color: var(--background);
 }
 
 .canvasWrapper {
   position: relative;
+  width: 100%;
+  height: 100%;
 }

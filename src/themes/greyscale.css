@@ -1,0 +1,49 @@
+.react-flow[data-theme='greyscale'] {
+  /* Custom Node Styles */
+  --icon-size: 48px;
+  --margin: 16px;
+  --handle-size: 0;
+  --label-size: 16px;
+  --label-weight: 600;
+  --radius: 16px;
+
+  /* Node Styles */
+  --xy-node-background-color-default: #252525;
+  --xy-node-border-default: none;
+  --xy-node-color-default: #ffffff;
+
+  /* Edge Styles */
+  --xy-edge-stroke-default: #ffffff;
+  --xy-edge-stroke-selected-default: var(--accent);
+  --xy-edge-stroke-width-default: 2;
+
+  /* Connection Line */
+  --xy-connectionline-stroke-default: #ffffff;
+  --xy-connectionline-stroke-width-default: 2;
+
+  /* Handle Styles */
+  --xy-handle-background-color-default: transparent;
+  --xy-handle-border-color-default: transparent;
+
+  /* Background Pattern */
+  --xy-background-pattern-dot-color-default: #ffffff;
+  --xy-background-pattern-line-color-default: #ffffff;
+  --xy-background-pattern-cross-color-default: #ffffff;
+
+  /* Selection Styles */
+  --xy-selection-background-color-default: rgba(255, 255, 255, 0.1);
+  --xy-selection-border-default: 1px dotted rgba(255, 255, 255, 0.5);
+
+  /* Controls Styles */
+  --xy-controls-button-background-color-default: #3c3c3c;
+  --xy-controls-button-background-color-hover-default: #555555;
+  --xy-controls-button-color-default: #ffffff;
+  --xy-controls-button-color-hover-default: #ffffff;
+  --xy-controls-button-border-color-default: #3c3c3c;
+
+  /* MiniMap */
+  --xy-minimap-background-color-default: #2d2d2d;
+
+  /* Attribution */
+  --xy-attribution-background-color-default: rgba(0, 0, 0, 0.5);
+}
