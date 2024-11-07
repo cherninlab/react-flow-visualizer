@@ -24,7 +24,9 @@ export default function App() {
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const [canvasSize, setCanvasSize] = useState({ width: 1600, height: 1200 }); // Larger default size
 
-  const onConnect: OnConnect = (connection) => setEdges((eds) => addEdge(connection, eds));
+  const onConnect: OnConnect = (connection) => setEdges((eds) =>
+    addEdge({ ...connection, type: 'smoothstep' }, eds)
+  );
 
   return (
     <div className={styles.app}>
