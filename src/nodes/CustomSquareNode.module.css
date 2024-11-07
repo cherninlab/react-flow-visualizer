@@ -9,39 +9,49 @@
 .container {
   width: 140px;
   height: 140px;
-  border: 2px solid #666;
-  border-radius: 6px;
+  border: var(--xy-node-border-default);
+  background-color: var(--xy-node-background-color-default);
+  border-radius: var(--radius);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  cursor: default;
   transition: all 0.2s ease;
 }
 
 .container:hover {
-  border-color: #fff;
+  border-color: var(--accent);
+}
+
+
+.container:focus {
+  border-color: var(--accent);
 }
 
 .icon {
-  width: 64px;
-  height: 64px;
-  color: #fff;
-  margin-bottom: 10px;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  border: var(--xy-node-color-default);
+  margin-bottom: var(--margin);
+  transition: all 0.2s ease;
 }
 
 .label {
-  color: #fff;
-  font-size: 14px;
+  border: var(--xy-node-color-default);
+  font-size: var(--label-size);
+  font-weight: var(--label-weight);
   text-align: center;
-  max-width: 120px;
+  max-width: 115px;
   overflow-wrap: break-word;
+  transition: all 0.2s ease;
 }
 
 .handle {
-  width: 8px;
-  height: 8px;
-  background: #fff;
-  border: 2px solid #1e1e1e;
+  width: var(--handle-size);
+  height: var(--handle-size);
+  background: var(--xy-handle-background-color-default);
+  border: 2px solid var(--xy-handle-border-color-default);;
   opacity: 0;
   transition: opacity 0.2s ease;
 }

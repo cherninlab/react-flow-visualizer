@@ -1,6 +1,5 @@
-import { CanvasSizeControls } from '@/components/CanvasSizeControls';
-import { CaptureButtons } from '@/components/CaptureButtons';
 import { CodeEditor } from '@/components/CodeEditor';
+import { Toolbar } from '@/components/Toolbar';
 import {
   Controls,
   OnConnect,
@@ -22,7 +21,7 @@ const GRID_SIZE = 20; // Base grid size
 export default function App() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-  const [canvasSize, setCanvasSize] = useState({ width: 1600, height: 1200 }); // Larger default size
+  const [theme, setTheme] = useState('default'); // State to hold the current theme
 
   const onConnect: OnConnect = (connection) => setEdges((eds) =>
     addEdge({ ...connection, type: 'smoothstep' }, eds)
@@ -34,10 +33,11 @@ export default function App() {
         <CodeEditor nodes={nodes} edges={edges} setNodes={setNodes} setEdges={setEdges} />
       </div>
       <div className={styles.canvasArea}>
-        <CanvasSizeControls canvasSize={canvasSize} setCanvasSize={setCanvasSize} />
+        {/* Add Toolbar */}
+        {/* <CanvasSizeControls canvasSize={canvasSize} setCanvasSize={setCanvasSize} />
+        <ThemeSelector theme={theme} setTheme={setTheme} /> */}
         <div
           className={styles.canvasWrapper}
-          style={{ width: canvasSize.width, height: canvasSize.height }}
         >
           <ReactFlow
             nodes={nodes}
@@ -52,9 +52,14 @@ export default function App() {
             snapGrid={[GRID_SIZE, GRID_SIZE]}
             fitView
             style={{ width: '100%', height: '100%' }}
+            className="react-flow"
+            data-theme={theme}
           >
             <Controls />
-            <CaptureButtons />
+        <Toolbar
+          theme={theme}
+          setTheme={setTheme}
+        />
           </ReactFlow>
         </div>
       </div>
