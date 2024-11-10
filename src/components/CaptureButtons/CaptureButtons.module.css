@@ -1,8 +1,0 @@
-.buttonsContainer {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  display: flex;
-  gap: 10px;
-  z-index: 5;
-}

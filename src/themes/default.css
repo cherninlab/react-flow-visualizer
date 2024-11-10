@@ -1,9 +1,11 @@
-:root {
-  /* Global Variables */
-  --background: #1e1e1e;
-  --background-secondary: #0d0d0d;
-  --foreground: #ffffff;
-  --accent: #ffbb00;
+.react-flow[data-theme='default'] {
+  /* Custom Node Styles */
+  --icon-size: 64px;
+  --margin: 10px;
+  --handle-size: 8px;
+  --label-size: 14px;
+  --label-weight: regular;
+  --radius: 6px;
 
   /* Node Styles */
   --xy-node-background-color-default: #1e1e1e;
@@ -13,11 +15,11 @@
   /* Edge Styles */
   --xy-edge-stroke-default: #888888;
   --xy-edge-stroke-selected-default: #bbbbbb;
-  --xy-edge-stroke-width-default: 5;
+  --xy-edge-stroke-width-default: 1;
 
   /* Connection Line */
   --xy-connectionline-stroke-default: #888888;
-  --xy-connectionline-stroke-width-default: 5;
+  --xy-connectionline-stroke-width-default: 1;
 
   /* Handle Styles */
   --xy-handle-background-color-default: #bbbbbb;
@@ -44,11 +46,4 @@
 
   /* Attribution */
   --xy-attribution-background-color-default: rgba(0, 0, 0, 0.5);
-}
-
-html,
-body,
-#root {
-  height: 100%;
-  margin: 0;
 }

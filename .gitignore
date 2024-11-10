@@ -18,6 +18,7 @@ dist-ssr
 .idea
 .DS_Store
 .export.ps1
+.export.sh
 .exported.txt
 *.suo
 *.ntvs*
