@@ -16,8 +16,7 @@
   --xy-edge-stroke-width-default: 5;
 
   /* Connection Line */
-  /* --xy-connectionline-stroke-default: #888888; */
-  --xy-connectionline-stroke-default: red;
+  --xy-connectionline-stroke-default: #888888;
   --xy-connectionline-stroke-width-default: 5;
 
   /* Handle Styles */

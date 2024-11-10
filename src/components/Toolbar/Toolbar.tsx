@@ -162,8 +162,8 @@ export const Toolbar = ({ theme, setTheme }: ToolbarProps) => {
       </select>
 
       {/* Save Image and Save Video Buttons */}
-      <Button onClick={handleSaveImage}>Save Image</Button>
-      <Button onClick={handleSaveVideo}>Save Video</Button>
+      <Button onClick={handleSaveImage}>⤓ .png</Button>
+      <Button onClick={handleSaveVideo}>⤓ .mp4</Button>
     </div>
   );
 };

@@ -33,9 +33,6 @@ export default function App() {
         <CodeEditor nodes={nodes} edges={edges} setNodes={setNodes} setEdges={setEdges} />
       </div>
       <div className={styles.canvasArea}>
-        {/* Add Toolbar */}
-        {/* <CanvasSizeControls canvasSize={canvasSize} setCanvasSize={setCanvasSize} />
-        <ThemeSelector theme={theme} setTheme={setTheme} /> */}
         <div
           className={styles.canvasWrapper}
         >
