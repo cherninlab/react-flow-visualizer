@@ -16,15 +16,21 @@ export function CustomSquareNode({ id, data }: NodeProps<CustomSquareNode>) {
   // Get all connections for this node
   const sourceConnections = edges.filter((edge: any) => edge.source === id);
   const targetConnections = edges.filter((edge: any) => edge.target === id);
-
   const isConnecting = !!nodeId;
 
-  const LucideIconComponent =
-    (LucideIcons as Record<string, any>)[data.iconName] || LucideIcons.Square;
-  const RadixIconComponent =
-    (RadixIcons as Record<string, any>)[data.iconName] || RadixIcons.SquareIcon;
+  const renderIcon = () => {
+    if (data.iconType === 'local') {
+      return <img src={`/icons/${data.iconName}.svg`} alt={data.label} className={styles.logo} />;
+    } else {
+      const LucideIconComponent =
+        (LucideIcons as Record<string, any>)[data.iconName] || LucideIcons.Square;
+      const RadixIconComponent =
+        (RadixIcons as Record<string, any>)[data.iconName] || RadixIcons.SquareIcon;
+      const IconComponent = data.iconType === 'radix' ? RadixIconComponent : LucideIconComponent;
 
-  const IconComponent = data.iconType === 'radix' ? RadixIconComponent : LucideIconComponent;
+      return <IconComponent className={styles.icon} />;
+    }
+  };
 
   return (
     <div className={styles.node}>
@@ -40,7 +46,7 @@ export function CustomSquareNode({ id, data }: NodeProps<CustomSquareNode>) {
           className={`${styles.handle} ${sourceConnections.length > 0 || isConnecting ? styles.visible : ''}`}
         />
 
-        <IconComponent className={styles.icon} />
+        {renderIcon()}
         <div className={styles.label}>{data.label}</div>
       </div>
     </div>

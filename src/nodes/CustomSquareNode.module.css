@@ -18,12 +18,12 @@
   justify-content: center;
   cursor: default;
   transition: all 0.2s ease;
+  padding: 10px;
 }
 
 .container:hover {
   border-color: var(--accent);
 }
-
 
 .container:focus {
   border-color: var(--accent);
@@ -37,8 +37,23 @@
   transition: all 0.2s ease;
 }
 
+.logo {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  margin-bottom: var(--margin);
+  transition: all 0.2s ease;
+  object-fit: contain;
+}
+
+.logoWordmark {
+  width: calc(var(--icon-size) * 1.5);
+  height: calc(var(--icon-size) * 0.5);
+  margin-bottom: var(--margin);
+  object-fit: contain;
+}
+
 .label {
-  border: var(--xy-node-color-default);
+  color: var(--xy-node-color-default);
   font-size: var(--label-size);
   font-weight: var(--label-weight);
   text-align: center;
@@ -51,7 +66,7 @@
   width: var(--handle-size);
   height: var(--handle-size);
   background: var(--xy-handle-background-color-default);
-  border: 2px solid var(--xy-handle-border-color-default);;
+  border: 2px solid var(--xy-handle-border-color-default);
   opacity: 0;
   transition: opacity 0.2s ease;
 }

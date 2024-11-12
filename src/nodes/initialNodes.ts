@@ -13,8 +13,8 @@ export const initialNodes: AppNode[] = [
     position: getGridPosition(2, 0),
     data: {
       label: 'React Frontend',
-      iconName: 'CodeIcon',
-      iconType: 'radix',
+      iconName: 'react',
+      iconType: 'local',
       sourcePosition: Position.Bottom,
       targetPosition: Position.Top,
     },
@@ -25,8 +25,8 @@ export const initialNodes: AppNode[] = [
     position: getGridPosition(1, 1),
     data: {
       label: 'State Management',
-      iconName: 'LayersIcon',
-      iconType: 'radix',
+      iconName: 'redux',
+      iconType: 'local',
       sourcePosition: Position.Left,
       targetPosition: Position.Right,
     },
@@ -37,7 +37,7 @@ export const initialNodes: AppNode[] = [
     position: getGridPosition(2, 2),
     data: {
       label: 'API Gateway',
-      iconName: 'Router',
+      iconName: 'Network',
       iconType: 'lucide',
       sourcePosition: Position.Bottom,
       targetPosition: Position.Top,
@@ -49,8 +49,8 @@ export const initialNodes: AppNode[] = [
     position: getGridPosition(2, 4),
     data: {
       label: 'Authentication',
-      iconName: 'LockClosedIcon',
-      iconType: 'radix',
+      iconName: 'auth0',
+      iconType: 'local',
       sourcePosition: Position.Bottom,
       targetPosition: Position.Top,
     },
@@ -61,8 +61,8 @@ export const initialNodes: AppNode[] = [
     position: getGridPosition(3, 4),
     data: {
       label: 'Database',
-      iconName: 'Database',
-      iconType: 'lucide',
+      iconName: 'mongodb',
+      iconType: 'local',
       sourcePosition: Position.Bottom,
       targetPosition: Position.Top,
     },
@@ -73,7 +73,19 @@ export const initialNodes: AppNode[] = [
     position: getGridPosition(-0.5, 1),
     data: {
       label: 'Cache Layer',
-      iconName: 'Zap',
+      iconName: 'redis',
+      iconType: 'local',
+      sourcePosition: Position.Left,
+      targetPosition: Position.Right,
+    },
+  },
+  {
+    id: 'deployment',
+    type: 'custom-square',
+    position: getGridPosition(3, 2),
+    data: {
+      label: 'Deployment',
+      iconName: 'Cloud',
       iconType: 'lucide',
       sourcePosition: Position.Left,
       targetPosition: Position.Right,

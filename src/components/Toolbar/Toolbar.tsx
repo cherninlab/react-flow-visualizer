@@ -1,12 +1,8 @@
+import { Button } from '@/components/Button';
+import { getNodesBounds, getViewportForBounds, Panel, useReactFlow } from '@xyflow/react';
+import { toSvg } from 'html-to-image';
 import React, { useState } from 'react';
 import styles from './Toolbar.module.css';
-import { Button } from '@/components/Button';
-import {
-  useReactFlow,
-  getNodesBounds,
-  getViewportForBounds,
-} from '@xyflow/react';
-import { toPng } from 'html-to-image';
 
 interface ToolbarProps {
   theme: string;
@@ -14,11 +10,12 @@ interface ToolbarProps {
 }
 
 export const Toolbar = ({ theme, setTheme }: ToolbarProps) => {
-  const [width, setWidth] = useState(1920); // Default image width
-  const [height, setHeight] = useState(1080); // Default image height
+  const [width, setWidth] = useState(1920);
+  const [height, setHeight] = useState(1080);
   const [preset, setPreset] = useState('');
 
-  // Presets
+  const { getNodes } = useReactFlow();
+
   const presets = [
     { name: 'Instagram Post', width: 1080, height: 1080 },
     { name: 'Twitter Post', width: 1200, height: 675 },
@@ -26,7 +23,6 @@ export const Toolbar = ({ theme, setTheme }: ToolbarProps) => {
     { name: 'Stories 9:16', width: 1080, height: 1920 },
   ];
 
-  // Handle preset change
   const handlePresetChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedPreset = presets.find((p) => p.name === e.target.value);
     if (selectedPreset) {
@@ -38,93 +34,89 @@ export const Toolbar = ({ theme, setTheme }: ToolbarProps) => {
     }
   };
 
-  // Handle manual width and height changes
   const handleWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newWidth = parseInt(e.target.value) || 0;
     setWidth(newWidth);
-    setPreset(''); // Reset preset if custom size is entered
+    setPreset('');
   };
 
   const handleHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newHeight = parseInt(e.target.value) || 0;
     setHeight(newHeight);
-    setPreset(''); // Reset preset if custom size is entered
+    setPreset('');
   };
 
-  // Handle theme change
   const handleThemeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setTheme(e.target.value);
   };
 
-  // Access React Flow instance
-  const { getNodes } = useReactFlow();
-
-  // Handle Save Image
-  const handleSaveImage = async () => {
+  const handleSaveSVG = async () => {
     const nodes = getNodes();
-    if (!nodes || nodes.length === 0) {
+    if (!nodes.length) {
       alert('No nodes to export');
       return;
     }
 
-    // Calculate the bounds of all nodes
-    const nodesBounds = getNodesBounds(nodes);
+    try {
+      // Get the flow container
+      const flowElement = document.querySelector('.react-flow');
+      if (!flowElement) return;
 
-    // Define the desired image dimensions
-    const imageWidth = width;
-    const imageHeight = height;
+      // Calculate bounds and viewport
+      const nodesBounds = getNodesBounds(nodes);
+      const viewport = getViewportForBounds(nodesBounds, width, height, 0.5, 2, 0.1);
 
-    // Calculate the viewport for the bounds
-    const viewport = getViewportForBounds(
-      nodesBounds,
-      imageWidth,
-      imageHeight,
-      0.1, // minZoom
-      3,    // maxZoom
-      0.1 // padding (10% padding)
-    );
+      const exportOptions = {
+        backgroundColor: 'transparent',
+        width,
+        height,
+        style: {
+          width: `${width}px`,
+          height: `${height}px`,
+          transform: `translate(${viewport.x}px, ${viewport.y}px) scale(${viewport.zoom})`,
+        },
+        filter: (node: HTMLElement) => {
+          // Exclude UI elements and temporary overlays
+          const exclusions = [
+            'react-flow__minimap',
+            'react-flow__controls',
+            'react-flow__panel',
+            'react-flow__attribution',
+            'toolbar',
+          ];
+          const result = !exclusions.some((className) => node.classList?.contains(className));
+          return result;
+        },
+        preferredFontFormat: 'woff2' as const,
+        imagePlaceholder: undefined,
+        pixelRatio: window.devicePixelRatio || 1,
+        skipFonts: false,
+        quality: 1,
+        cacheBust: true,
+      };
 
-    // Select the viewport element
-    const viewportElement = document.querySelector('.react-flow__viewport');
-    if (!viewportElement) return;
+      const dataUrl = await toSvg(flowElement as HTMLElement, exportOptions);
 
-    // Use html-to-image to generate the image
-    toPng(viewportElement as HTMLElement, {
-      backgroundColor: 'transparent', // Use transparent or specify a color
-      width: imageWidth,
-      height: imageHeight,
-      style: {
-        width: `${imageWidth}px`,
-        height: `${imageHeight}px`,
-        transform: `translate(${viewport.x}px, ${viewport.y}px) scale(${viewport.zoom})`,
-        // 'transform-origin': '0 0',
-      },
-    })
-      .then((dataUrl) => {
-        // Create a link and trigger download
-        const link = document.createElement('a');
-        link.setAttribute('download', 'diagram.png');
-        link.setAttribute('href', dataUrl);
-        link.click();
-      })
-      .catch((error) => {
-        console.error('Error generating image:', error);
-      });
-  };
-
-  // Handle Save Video
-  const handleSaveVideo = () => {
-    alert('Save Video functionality is not implemented yet.');
+      // Create download link
+      const link = document.createElement('a');
+      link.download = 'flow-diagram.svg';
+      link.href = dataUrl;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error('Error generating SVG:', error);
+    }
   };
 
   return (
-    <div className={styles.toolbar}>
-      {/* Width and Height Inputs */}
+    <Panel position="top-left" className={styles.toolbar}>
       <input
         type="number"
         value={width}
         onChange={handleWidthChange}
         className={styles.sizeInput}
+        aria-label="Width"
       />
       <span className={styles.multiply}>×</span>
       <input
@@ -132,14 +124,10 @@ export const Toolbar = ({ theme, setTheme }: ToolbarProps) => {
         value={height}
         onChange={handleHeightChange}
         className={styles.sizeInput}
+        aria-label="Height"
       />
 
-      {/* Preset Selector */}
-      <select
-        value={preset}
-        onChange={handlePresetChange}
-        className={styles.select}
-      >
+      <select value={preset} onChange={handlePresetChange} className={styles.select}>
         <option value="" disabled>
           {preset || 'Preset'}
         </option>
@@ -150,21 +138,14 @@ export const Toolbar = ({ theme, setTheme }: ToolbarProps) => {
         ))}
       </select>
 
-      {/* Theme Selector */}
-      <select
-        value={theme}
-        onChange={handleThemeChange}
-        className={styles.select}
-      >
+      <select value={theme} onChange={handleThemeChange} className={styles.select}>
         <option value="default">Default Style</option>
         <option value="bold">Bold Style</option>
         <option value="greyscale">Greyscale Style</option>
       </select>
 
-      {/* Save Image and Save Video Buttons */}
-      <Button onClick={handleSaveImage}>⤓ .png</Button>
-      <Button onClick={handleSaveVideo}>⤓ .mp4</Button>
-    </div>
+      <Button onClick={handleSaveSVG}>⤓ .svg</Button>
+    </Panel>
   );
 };
 
