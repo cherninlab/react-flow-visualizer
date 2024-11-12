@@ -1,4 +1,4 @@
-import type { Node, Position } from '@xyflow/react';
+import type { Node } from '@xyflow/react';
 
 export type PositionLoggerNode = Node<{ label: string }, 'position-logger'>;
 
@@ -8,8 +8,6 @@ export type CustomSquareNodeData = {
   label: string;
   iconName: string;
   iconType: IconType;
-  sourcePosition?: Position;
-  targetPosition?: Position;
 };
 
 export type CustomSquareNode = Node<CustomSquareNodeData, 'custom-square'>;

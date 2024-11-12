@@ -1,94 +1,78 @@
-import { Position } from '@xyflow/react';
 import { AppNode } from './types';
 
-const getGridPosition = (col: number, row: number) => ({
-  x: col * 160,
-  y: row * 160,
-});
-
 export const initialNodes: AppNode[] = [
+  // Frontend Layer
   {
     id: 'react',
     type: 'custom-square',
-    position: getGridPosition(2, 0),
+    position: { x: 400, y: 0 },
     data: {
       label: 'React Frontend',
       iconName: 'react',
       iconType: 'local',
-      sourcePosition: Position.Bottom,
-      targetPosition: Position.Top,
     },
   },
+  // State & Cache Layer
   {
     id: 'state-management',
     type: 'custom-square',
-    position: getGridPosition(1, 1),
+    position: { x: 200, y: 240 },
     data: {
       label: 'State Management',
       iconName: 'redux',
       iconType: 'local',
-      sourcePosition: Position.Left,
-      targetPosition: Position.Right,
-    },
-  },
-  {
-    id: 'api-gateway',
-    type: 'custom-square',
-    position: getGridPosition(2, 2),
-    data: {
-      label: 'API Gateway',
-      iconName: 'Network',
-      iconType: 'lucide',
-      sourcePosition: Position.Bottom,
-      targetPosition: Position.Top,
-    },
-  },
-  {
-    id: 'auth',
-    type: 'custom-square',
-    position: getGridPosition(2, 4),
-    data: {
-      label: 'Authentication',
-      iconName: 'auth0',
-      iconType: 'local',
-      sourcePosition: Position.Bottom,
-      targetPosition: Position.Top,
-    },
-  },
-  {
-    id: 'database',
-    type: 'custom-square',
-    position: getGridPosition(3, 4),
-    data: {
-      label: 'Database',
-      iconName: 'mongodb',
-      iconType: 'local',
-      sourcePosition: Position.Bottom,
-      targetPosition: Position.Top,
     },
   },
   {
     id: 'cache',
     type: 'custom-square',
-    position: getGridPosition(-0.5, 1),
+    position: { x: 0, y: 240 },
     data: {
       label: 'Cache Layer',
       iconName: 'redis',
       iconType: 'local',
-      sourcePosition: Position.Left,
-      targetPosition: Position.Right,
+    },
+  },
+  // API & Deployment Layer
+  {
+    id: 'api-gateway',
+    type: 'custom-square',
+    position: { x: 400, y: 240 },
+    data: {
+      label: 'API Gateway',
+      iconName: 'Network',
+      iconType: 'lucide',
     },
   },
   {
     id: 'deployment',
     type: 'custom-square',
-    position: getGridPosition(3, 2),
+    position: { x: 600, y: 240 },
     data: {
       label: 'Deployment',
       iconName: 'Cloud',
       iconType: 'lucide',
-      sourcePosition: Position.Left,
-      targetPosition: Position.Right,
+    },
+  },
+  // Backend Services Layer
+  {
+    id: 'auth',
+    type: 'custom-square',
+    position: { x: 300, y: 480 },
+    data: {
+      label: 'Authentication',
+      iconName: 'auth0',
+      iconType: 'local',
+    },
+  },
+  {
+    id: 'database',
+    type: 'custom-square',
+    position: { x: 500, y: 480 },
+    data: {
+      label: 'Database',
+      iconName: 'mongodb',
+      iconType: 'local',
     },
   },
 ];
