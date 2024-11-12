@@ -1,9 +1,10 @@
 # React Flow Visualizer
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-black.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.1.3-blue.svg)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-18.2.0-blue.svg)](https://reactjs.org/)
 [![Vite](https://img.shields.io/badge/Vite-5.0.12-blue.svg)](https://vitejs.dev/)
+[![Live Demo](https://img.shields.io/badge/🚀-Live_Demo-green.svg)](https://react-flow-visualizer.pages.dev/)
 
 A powerful and flexible React application for creating interactive system architecture diagrams and workflow visualizations using React Flow. Built with React, TypeScript, and Vite.
 
