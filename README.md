@@ -8,6 +8,8 @@
 
 A powerful and flexible React application for creating interactive system architecture diagrams and workflow visualizations using React Flow. Built with React, TypeScript, and Vite.
 
+![alt text](example.gif)
+
 ## Quick Start
 
 ### Installation
