@@ -1,0 +1,17 @@
+.groupNode {
+  width: 100%;
+  height: 100%;
+  border: var(--xy-node-border-default);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.groupLabel {
+  position: absolute;
+  bottom: -32px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--xy-node-color-default);
+  font-size: 1rem;
+  white-space: nowrap;
+}

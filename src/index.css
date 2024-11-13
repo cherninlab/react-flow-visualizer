@@ -44,6 +44,13 @@
 
   /* Attribution */
   --xy-attribution-background-color-default: rgba(0, 0, 0, 0.5);
+
+  /* Z-Index */
+  --z-index-nodes: -1;
+}
+
+.react-flow__nodes {
+  z-index: var(--z-index-nodes);
 }
 
 html,

@@ -150,7 +150,7 @@ export const initialEdges: Edge[] = [
     source: 'lambda',
     sourceHandle: 'bottom-l',
     target: 'cloudwatch',
-    targetHandle: 'target-top-c',
+    targetHandle: 'target-top-r',
     type: 'smoothstep',
     markerEnd: createMarkerEnd(COLORS.monitoring),
     style: { stroke: COLORS.monitoring },

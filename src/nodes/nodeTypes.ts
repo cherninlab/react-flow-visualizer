@@ -1,8 +1,8 @@
-import type { NodeTypes } from '@xyflow/react';
+import { NodeTypes } from '@xyflow/react';
 import { CustomSquareNode } from './CustomSquareNode';
-import { PositionLoggerNode } from './PositionLoggerNode';
+import { LabeldGroupNode } from './LabeldGroupNode';
 
 export const nodeTypes: NodeTypes = {
-  'position-logger': PositionLoggerNode,
   'custom-square': CustomSquareNode,
+  'labeld-group': LabeldGroupNode,
 };

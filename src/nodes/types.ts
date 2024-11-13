@@ -1,7 +1,5 @@
 import type { Node } from '@xyflow/react';
 
-export type PositionLoggerNode = Node<{ label: string }, 'position-logger'>;
-
 export type IconType = 'lucide' | 'radix' | 'local';
 
 export type CustomSquareNodeData = {
@@ -10,5 +8,11 @@ export type CustomSquareNodeData = {
   iconType: IconType;
 };
 
+export type LabeldGroupNodeData = {
+  label: string;
+};
+
 export type CustomSquareNode = Node<CustomSquareNodeData, 'custom-square'>;
-export type AppNode = PositionLoggerNode | CustomSquareNode;
+export type LabeldGroupNode = Node<LabeldGroupNodeData, 'labeld-group'>;
+
+export type AppNode = CustomSquareNode | LabeldGroupNode;

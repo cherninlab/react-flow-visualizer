@@ -1,6 +1,13 @@
 import { AppNode } from './types';
 
 export const initialNodes: AppNode[] = [
+  {
+    id: 'storage-group',
+    type: 'labeld-group',
+    position: { x: 120, y: 820 },
+    style: { width: 860, height: 200 },
+    data: { label: 'Storage & Monitoring Layer' },
+  },
   // Frontend Layer
   {
     id: 'react',
@@ -79,41 +86,49 @@ export const initialNodes: AppNode[] = [
   {
     id: 'database',
     type: 'custom-square',
-    position: { x: 160, y: 860 },
+    position: { x: 40, y: 40 },
     data: {
       label: 'MongoDB Atlas',
       iconName: 'mongodb',
       iconType: 'local',
     },
+    parentId: 'storage-group',
+    extent: 'parent',
   },
   {
     id: 'cache',
     type: 'custom-square',
-    position: { x: 380, y: 860 },
+    position: { x: 260, y: 40 },
     data: {
       label: 'Redis Cache',
       iconName: 'redis',
       iconType: 'local',
     },
+    parentId: 'storage-group',
+    extent: 'parent',
   },
   {
     id: 'cloudwatch',
     type: 'custom-square',
-    position: { x: 600, y: 860 },
+    position: { x: 480, y: 40 },
     data: {
       label: 'CloudWatch Logs',
       iconName: 'aws/CloudwatchLogs',
       iconType: 'local',
     },
+    parentId: 'storage-group',
+    extent: 'parent',
   },
   {
     id: 's3',
     type: 'custom-square',
-    position: { x: 820, y: 860 },
+    position: { x: 700, y: 40 },
     data: {
       label: 'S3 Storage',
       iconName: 'aws/SimpleStorageServiceStandard',
       iconType: 'local',
     },
+    parentId: 'storage-group',
+    extent: 'parent',
   },
 ];
